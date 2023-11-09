@@ -24,9 +24,12 @@ The USGS provides earthquake data in a number of different formats, updated ever
 When you click a dataset (such as "All Earthquakes from the Past 7 Days"), you will be given a JSON representation of that data. 
 Use the URL of this JSON to pull in the data for the visualization.
 
-   ## Import and visualize the data 
+''' let url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+'''
 
-Using Leaflet, create a map that plots all the earthquakes from your dataset based on their longitude and latitude.
+
+   ## Import and visualize the data 
+this Challenge we will uses both HTML and JavaScript,by using Leaflet, create a map that plots all the earthquakes from your dataset based on their longitude and latitude.
 the data markers should reflect the magnitude of the earthquake by their size and depth of the earthquake by color.
 (The depth is found as the third coordinate for each earthquake)
 Earthquakes with higher magnitudes should appear larger, and earthquakes with greater depth should appear darker in color.
