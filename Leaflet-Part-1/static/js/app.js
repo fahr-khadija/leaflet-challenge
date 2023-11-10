@@ -82,9 +82,8 @@ legend.onAdd = function (map) {
   let legendContent = "<h4>Depth</h4>";
 
   for (let i = 0; i < depthLevels.length; i++) {
-    legendContent += `<div><span style="background:${colors[i]};display:inline-block;width:12px;height:12px;"></span> ${
-      depthLevels[i]
-    }${depthLevels[i + 1] ? "&ndash;" + depthLevels[i + 1] + "<br>" : "+"}</div>`;
+    legendContent += `<div><span style="background:${colors[i]};display:inline-block;width:12px;height:12px;"></span> 
+    ${depthLevels[i]} ${depthLevels[i + 1] ? "&ndash;" + depthLevels[i + 1] + "<br>" : "+"}</div>`;
   }
 
   div.innerHTML = legendContent;
