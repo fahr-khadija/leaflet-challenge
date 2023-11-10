@@ -65,26 +65,32 @@ function createMap(earthquakes) {
     };
   
     // Add the layer control to the map.
-    L.control.layers(baseMaps, overlayMaps, {
-      collapsed: false
-    }).addTo(myMap);
-  
-    let legend = L.control({ position: "bottomright" });
-  
-    legend.onAdd = function (map) {
-      let div = L.DomUtil.create("div", "info legend");
-      let depthLevels = [-10, 10, 30, 50, 70, 90];
-      let colors = ['#1a9850', '#91cf60', '#d9ef8b', '#fee08b', '#fc8d59', '#d73027'];
-  
-      div.innerHTML += "<h4>Depth</h4>";
-      for (let i = 0; i < depthLevels.length; i++) {
-        div.innerHTML +='<i style="background:' + colors[i] + '"></i> ' +   depthLevels[i] + (depthLevels[i + 1] ? "&ndash;" + depthLevels[i + 1] + "<br>" : "+");
-      }
-      return div;
-    };
-  
-    legend.addTo(myMap);
+let layerControl = L.control.layers(baseMaps, overlayMaps, {
+  collapsed: false
+});
+layerControl.addTo(myMap);
+
+// Create the legend control and add it to the map.
+let legend = L.control({ position: "bottomright" });
+
+legend.onAdd = function (map) {
+  let div = document.createElement("div");
+  div.className = "info legend";
+  let depthLevels = [-10, 10, 30, 50, 70, 90];
+  let colors = ['#1a9850', '#91cf60', '#d9ef8b', '#fee08b', '#fc8d59', '#d73027'];
+
+  let legendContent = "<h4>Depth</h4>";
+
+  for (let i = 0; i < depthLevels.length; i++) {
+    legendContent += `<div><span style="background:${colors[i]};display:inline-block;width:12px;height:12px;"></span> ${
+      depthLevels[i]
+    }${depthLevels[i + 1] ? "&ndash;" + depthLevels[i + 1] + "<br>" : "+"}</div>`;
   }
-  
-  // ...
+
+  div.innerHTML = legendContent;
+  return div;
+};
+
+legend.addTo(myMap);
+}
   
